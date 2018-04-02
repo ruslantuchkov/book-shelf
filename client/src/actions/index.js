@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+/*============= BOOKS =============*/
+
 export function getBooks(limit = 10, start = 0, order = 'asc', list) {
   const request = axios
     .get(`/api/books?limit=${limit}&skip=${start}&order=${order}`)
@@ -43,5 +45,18 @@ export function clearBookWithReviewer() {
       book: {},
       reviewer: {}
     }
+  };
+}
+
+/*============= USER =============*/
+
+export function loginUser({ email, password }) {
+  const request = axios
+    .post('/api/login', { email, password })
+    .then(response => response.data);
+
+  return {
+    type: 'USER_LOGIN',
+    payload: request
   };
 }
