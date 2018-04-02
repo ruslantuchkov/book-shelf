@@ -13,3 +13,35 @@ export function getBooks(limit = 10, start = 0, order = 'asc', list) {
 
   return { type: 'GET_BOOKS', payload: request };
 }
+
+export function getBookWithReviewer(id) {
+  const request = axios.get(`/api/getBook?id=${id}`);
+
+  return dispatch => {
+    request.then(({ data: book }) => {
+      axios
+        .get(`/api/getReviewer?id=${book.ownerId}`)
+        .then(({ data: reviewer }) => {
+          let response = {
+            book,
+            reviewer
+          };
+
+          dispatch({
+            type: 'GET_BOOK_WITH_REVIEWER',
+            payload: response
+          });
+        });
+    });
+  };
+}
+
+export function clearBookWithReviewer() {
+  return {
+    type: 'CLEAR_BOOK_WITH_REVIEWER',
+    payload: {
+      book: {},
+      reviewer: {}
+    }
+  };
+}
