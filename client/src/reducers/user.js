@@ -15,6 +15,17 @@ export default function(state = {}, { type, payload }) {
         ...state,
         userPosts: payload
       };
+    case 'GET_USERS':
+      return {
+        ...state,
+        userList: payload
+      };
+    case 'REGISTE_USER':
+      return {
+        ...state,
+        registed: payload.registed,
+        userList: payload.userList
+      };
     default:
       return state;
   }

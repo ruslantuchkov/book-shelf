@@ -107,7 +107,7 @@ export function clearBook() {
   return {
     type: 'CLEAR_BOOK',
     payload: {
-      book: {},
+      book: null,
       updateBook: false,
       bookDeleted: false
     }
@@ -131,6 +131,28 @@ export function auth() {
   const request = axios.get('/api/auth').then(response => response.data);
   return {
     type: 'USER_AUTH',
+    payload: request
+  };
+}
+
+export function getUsers() {
+  const request = axios.get('/api/users').then(response => response.data);
+  return {
+    type: 'GET_USERS',
+    payload: request
+  };
+}
+
+export function registeUser(user, users) {
+  const request = axios.post('/api/register', user).then(({ data }) => {
+    const userList = data.success ? [...users, data.user] : users;
+    return {
+      registed: data.success,
+      userList
+    };
+  });
+  return {
+    type: 'REGISTE_USER',
     payload: request
   };
 }

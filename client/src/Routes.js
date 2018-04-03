@@ -10,6 +10,7 @@ import User from './components/Admin/User';
 import AddReview from './components/Admin/AddReview';
 import UserReviews from './components/Admin/UserReviews';
 import EditReview from './components/Admin/EditReview';
+import Register from './components/Admin/Register';
 
 const Routes = () => {
   return (
@@ -30,6 +31,7 @@ const Routes = () => {
           exact
           component={Auth(UserReviews, true)}
         />
+        <Route path="/user/register" exact component={Auth(Register, true)} />
       </Switch>
     </Layout>
   );
