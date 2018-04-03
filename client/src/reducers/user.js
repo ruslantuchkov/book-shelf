@@ -10,6 +10,11 @@ export default function(state = {}, { type, payload }) {
         ...state,
         login: payload
       };
+    case 'GET_USER_POSTS':
+      return {
+        ...state,
+        userPosts: payload
+      };
     default:
       return state;
   }
