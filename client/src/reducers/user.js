@@ -5,6 +5,11 @@ export default function(state = {}, { type, payload }) {
         ...state,
         login: payload
       };
+    case 'USER_AUTH':
+      return {
+        ...state,
+        login: payload
+      };
     default:
       return state;
   }
