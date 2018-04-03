@@ -48,6 +48,21 @@ export function clearBookWithReviewer() {
   };
 }
 
+export function addReview(data) {
+  const request = axios.post('/api/book', data).then(response => response.data);
+  return {
+    type: 'ADD_REVIEW',
+    payload: request
+  };
+}
+
+export function clearNewBook() {
+  return {
+    type: 'CLEAR_NEW_BOOK',
+    payload: {}
+  };
+}
+
 /*============= USER =============*/
 
 export function loginUser({ email, password }) {

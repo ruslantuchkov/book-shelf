@@ -14,6 +14,16 @@ export default function(state = [], { type, payload }) {
         book: payload.book,
         reviewer: payload.reviewer
       };
+    case 'ADD_REVIEW':
+      return {
+        ...state,
+        newBook: payload
+      };
+    case 'CLEAR_NEW_BOOK':
+      return {
+        ...state,
+        newBook: payload
+      };
     default:
       return state;
   }
