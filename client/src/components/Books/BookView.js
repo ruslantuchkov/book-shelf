@@ -18,7 +18,7 @@ class BookView extends Component {
   }
 
   renderBook = books =>
-    books.book ? (
+    books.book && books.reviewer ? (
       <div className="br_container">
         <div className="br_header">
           <h2>{books.book.name}</h2>

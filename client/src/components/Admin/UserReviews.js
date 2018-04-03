@@ -20,7 +20,7 @@ class UserReviews extends Component {
       ? user.userPosts.map(({ _id, name, author, createAt }) => (
           <tr key={_id}>
             <td>
-              <Link to={`user/edit-post/${_id}`}>{name}</Link>
+              <Link to={`/user/edit-post/${_id}`}>{name}</Link>
             </td>
             <td>{author}</td>
             <td>{moment(createAt).format('DD/MM/YY')}</td>
