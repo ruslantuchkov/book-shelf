@@ -13,6 +13,8 @@ const auth = require('./middleware/auth');
 app.use(require('body-parser').json());
 app.use(require('cookie-parser')());
 
+app.use(express.static('client/build'));
+
 // GET //
 
 app.get('/api/getBook', (req, res) => {
@@ -147,6 +149,13 @@ app.delete('/api/delete_book', (req, res) => {
     res.json({ success: true });
   });
 });
+
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.get('/*', (req, res) => {
+    res.sendfile(path.resolve(__dirname, '../client', 'build', 'index.html'));
+  });
+}
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => console.log(`server is running on port: ${port}!`));
