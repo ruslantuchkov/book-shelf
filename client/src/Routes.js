@@ -11,6 +11,7 @@ import AddReview from './components/Admin/AddReview';
 import UserReviews from './components/Admin/UserReviews';
 import EditReview from './components/Admin/EditReview';
 import Register from './components/Admin/Register';
+import Logout from './components/Admin/Logout';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route path="/" exact component={Auth(Home)} />
         <Route path="/books/:id" exact component={Auth(BookView)} />
         <Route path="/login" exact component={Auth(Login, false)} />
+        <Route path="/user/logout" exact component={Auth(Logout, true)} />
         <Route path="/user" exact component={Auth(User, true)} />
         <Route path="/user/add" exact component={Auth(AddReview, true)} />
         <Route

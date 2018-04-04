@@ -11,7 +11,7 @@ function mapStateToProps({ books }) {
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(getBooks(1, 0, 'desc'));
+    this.props.dispatch(getBooks(5, 0, 'desc'));
   }
 
   renderItems = books =>
